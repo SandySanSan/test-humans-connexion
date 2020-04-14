@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../redux/users/users-actions';
+import { fetchUsers, deleteUser } from '../../redux/users/users-actions';
 import UserListItem from './User-list-item.component';
-import { Row, Col } from 'antd';
+import { Row, Col, notification } from 'antd';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
     width: 80vw;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 15px;
     margin: 15px auto;
 `;
@@ -19,6 +21,21 @@ class UsersList extends React.Component {
         // retrieve users data
         this.props.fetchUsers();
     }
+
+    handleDelete = (id) => {
+        this.props.deleteUser(id);
+        // open notification after an user is deleted
+        this.openNotificationWithIcon();
+    };
+
+    openNotificationWithIcon = () => {
+        notification['success']({
+            message: 'Suppression réussie !',
+            description: "L'utilisateur a bien été supprimé",
+            placement: 'topRight',
+            duration: 2,
+        });
+    };
 
     render() {
         const { users } = this.props;
@@ -33,8 +50,12 @@ class UsersList extends React.Component {
                                     width: 300,
                                     padding: '15px',
                                     borderRadius: '10px',
-                                }}>
-                                <UserListItem user={user} key={user.id} />
+                                }}
+                                key={user.id}>
+                                <UserListItem
+                                    user={user}
+                                    handleDelete={this.handleDelete}
+                                />
                             </Col>
                         ))}
                 </Row>
@@ -51,6 +72,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     fetchUsers,
+    deleteUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
