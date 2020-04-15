@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
-import { Card, Button, Avatar, Modal } from 'antd';
+import { connect } from 'react-redux';
+import { deleteUser } from '../../redux/users/users-actions';
+
+import { Card, Button, Avatar, Modal, notification } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import CardList from './Card.component';
 
 const { Meta } = Card;
 
-const UserListItem = ({ user, handleDelete }) => {
+const UserListItem = ({ user, deleteUser }) => {
     // handles modal's visibility
     const [visible, setVisible] = useState(false);
 
     const { firstName, lastName, email, city, company, id } = user;
+
+    const handleDelete = (id) => {
+        deleteUser(id);
+        // open notification after an user is deleted
+        openNotificationWithIcon();
+    };
+
+    const openNotificationWithIcon = () => {
+        notification['success']({
+            message: 'Suppression réussie !',
+            description: "L'utilisateur a bien été supprimé",
+            placement: 'topRight',
+            duration: 4,
+        });
+    };
 
     return (
         <>
@@ -56,5 +74,7 @@ const UserListItem = ({ user, handleDelete }) => {
         </>
     );
 };
-
-export default UserListItem;
+const mapDispatchToProps = {
+    deleteUser,
+};
+export default connect(null, mapDispatchToProps)(UserListItem);

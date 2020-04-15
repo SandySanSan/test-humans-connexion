@@ -21,7 +21,7 @@ const HeaderComponent = () => {
                         color: '#ebfdff',
                         padding: '15px',
                     }}>
-                    Liste des utilisateurs
+                    LISTE DES UTILISATEURS
                 </Title>
             </div>
             <div>
