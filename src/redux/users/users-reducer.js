@@ -12,7 +12,6 @@ const usersReducer = (state = INTIAL_STATE, action) => {
             const filterUsers = newState.filter(
                 (user) => user.id !== action.payload
             );
-            console.log(filterUsers);
             return { users: filterUsers };
 
         case usersActionTypes.ADD_USER:
