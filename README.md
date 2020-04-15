@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/685c1f55-208b-4ad3-9e3a-3895d5100659/deploy-status)](https://app.netlify.com/sites/test-humans-connexion-spr/deploys)
+
 ## Contexte
 
 Test réalisé pour Human's Connexion d'après ce [repo](https://github.com/Humans-Connexion/test).
