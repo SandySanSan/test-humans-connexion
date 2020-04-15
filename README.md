@@ -20,5 +20,5 @@ qui démarre l'application en mode développement.<br />
 
 -   Optimiser les champs du formulaire pour éviter la répétition.
 -   Rajouter les regex pour la validation de l'email (voire du nom et prénom).
--   Améliorer l'UI lorsque que moins de 4 cards affichées.
+-   Améliorer l'UI lorsque moins de 4 cards affichées.
 -   Ajouter des filtres (nom, ville, entreprise).

@@ -55,12 +55,6 @@ const FormComponent = ({ addUser, setVisible }) => {
     };
 
     return (
-        /* 
-				note : 
-				Form has to be improved > create component for input to avoid repetition.
-				Add regex to email validation.
-				**/
-
         <form onSubmit={handleSubmit(onSubmit)}>
             <Container>
                 {/* Last name */}
