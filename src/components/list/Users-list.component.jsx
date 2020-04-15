@@ -33,7 +33,7 @@ class UsersList extends React.Component {
             message: 'Suppression réussie !',
             description: "L'utilisateur a bien été supprimé",
             placement: 'topRight',
-            duration: 2,
+            duration: 4,
         });
     };
 

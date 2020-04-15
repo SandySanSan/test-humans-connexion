@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { addUser } from '../../redux/users/users-actions';
+import { notification } from 'antd';
 
 import styled from 'styled-components';
 
@@ -40,14 +41,26 @@ const FormComponent = ({ addUser, setVisible }) => {
     const onSubmit = (data, e) => {
         e.target.reset(); // reset after form submit
         addUser(data);
+        openNotificationWithIcon();
         setVisible(false);
     };
+
+    const openNotificationWithIcon = () => {
+        notification['success']({
+            message: 'Ajout réussi !',
+            description: "L'utilisateur a bien été ajouté",
+            placement: 'topRight',
+            duration: 4,
+        });
+    };
+
     return (
         /* 
 				note : 
 				Form has to be improved > create component for input to avoid repetition.
 				Add regex to email validation.
 				**/
+
         <form onSubmit={handleSubmit(onSubmit)}>
             <Container>
                 {/* Last name */}
@@ -63,7 +76,7 @@ const FormComponent = ({ addUser, setVisible }) => {
                 {/* Email */}
                 <Label>Email :</Label>
                 <Input name='email' ref={register({ required: true })} />
-                <Errors>{errors.firstName && <span>Email requis</span>}</Errors>
+                <Errors>{errors.email && <span>Email requis</span>}</Errors>
                 {/* City */}
                 <Label>Ville :</Label>
                 <Input name='city' ref={register({ required: true })} />
@@ -74,7 +87,7 @@ const FormComponent = ({ addUser, setVisible }) => {
                 <Errors>
                     {errors.company && <span>Entreprise requise</span>}
                 </Errors>
-                <ButtonSubmit type='submit' />
+                <ButtonSubmit type='submit' value='Ajouter' />
             </Container>
         </form>
     );

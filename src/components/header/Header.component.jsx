@@ -16,7 +16,7 @@ const HeaderComponent = () => {
             }}>
             <div>
                 <Title
-                    level={2}
+                    level={3}
                     style={{
                         color: '#ebfdff',
                         padding: '15px',

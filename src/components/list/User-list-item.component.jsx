@@ -6,6 +6,7 @@ import CardList from './Card.component';
 const { Meta } = Card;
 
 const UserListItem = ({ user, handleDelete }) => {
+    // handles modal's visibility
     const [visible, setVisible] = useState(false);
 
     const { firstName, lastName, email, city, company, id } = user;
